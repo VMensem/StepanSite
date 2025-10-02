@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <h1>TestGrief</h1>
+  <p class="lead">Магазин сервера — товары, права, донат.</p>
+  <a class="btn" href="{{ url_for('shop') }}">Перейти к оплате</a>
+  <div class="play-stats">
+    <div class="play-count">Сейчас играют: <strong>{{ stats.players_now }}</strong></div>
+  </div>
+</section>
+
+<div class="cards">
+  <!-- Пример товара -->
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/item1.png') }}" alt="Товар 1" class="card-img">
+    <h3>Название товара</h3>
+    <p>Описание товара</p>
+    <button class="btn add-to-cart" data-name="Название товара" data-price="100">В корзину</button>
+  </div>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/item2.png') }}" alt="Товар 2" class="card-img">
+    <h3>Название товара</h3>
+    <p>Описание товара</p>
+    <button class="btn add-to-cart" data-name="Название товара" data-price="150">В корзину</button>
+  </div>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/item3.png') }}" alt="Товар 3" class="card-img">
+    <h3>Название товара</h3>
+    <p>Описание товара</p>
+    <button class="btn add-to-cart" data-name="Название товара" data-price="200">В корзину</button>
+  </div>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/item4.png') }}" alt="Товар 4" class="card-img">
+    <h3>Название товара</h3>
+    <p>Описание товара</p>
+    <button class="btn add-to-cart" data-name="Название товара" data-price="250">В корзину</button>
+  </div>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/item5.png') }}" alt="Товар 5" class="card-img">
+    <h3>Название товара</h3>
+    <p>Описание товара</p>
+    <button class="btn add-to-cart" data-name="Название товара" data-price="300">В корзину</button>
+  </div>
+</div>
+
+<script>
+const cartButtons = document.querySelectorAll('.add-to-cart');
+
+cartButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.name;
+    const price = parseFloat(btn.dataset.price);
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({name, price});
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Создаём уведомление
+    const notif = document.createElement('div');
+    notif.textContent = `${name} добавлен в корзину`;
+    notif.style.position = 'fixed';
+    notif.style.bottom = '20px';
+    notif.style.right = '20px';
+    notif.style.background = '#e11d1d';
+    notif.style.color = 'white';
+    notif.style.padding = '10px 15px';
+    notif.style.borderRadius = '6px';
+    notif.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+    notif.style.zIndex = '1000';
+    notif.style.opacity = '0';
+    notif.style.transform = 'translateY(20px)';
+    notif.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    document.body.appendChild(notif);
+
+    // Плавное появление
+    setTimeout(() => {
+      notif.style.opacity = '1';
+      notif.style.transform = 'translateY(0)';
+    }, 10);
+
+    // Плавное исчезновение через 2 секунды
+    setTimeout(() => {
+      notif.style.opacity = '0';
+      notif.style.transform = 'translateY(20px)';
+      setTimeout(() => notif.remove(), 500); // удалить после анимации
+    }, 2000);
+  });
+});
+</script>
+
+
+{% endblock %}

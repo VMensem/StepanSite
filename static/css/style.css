@@ -1,0 +1,332 @@
+/* ===== Общие стили ===== */
+:root {
+  --bg-color: #0b0c0f;
+  --panel-color: #14161a;
+  --accent-color: #e11d1d;
+  --text-color: #e6e6e6;
+  --muted-color: #9aa0a6;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --border-color: rgba(255, 255, 255, 0.07);
+  --shadow-accent: 0 0 15px rgba(225, 29, 29, 0.349);
+  --a-color: #e11d1d59; 
+}
+a {
+  color: inherit; 
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--a-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  background: url('static/images/background.png') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ===== Шапка сайта ===== */
+.site-header {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(255, 0, 0, 0.1));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent-color);
+  text-shadow: var(--shadow-accent);
+  letter-spacing: 1px;
+}
+
+.main-nav a {
+  color: var(--muted-color);
+  margin-left: 24px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: var(--accent-color);
+}
+
+.mini-stats {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+  color: var(--muted-color);
+}
+
+.mini-stats .stat span {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+/* ===== Герой-блок (hero) ===== */
+.hero {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(225, 29, 29, 0.08), transparent);
+  border-radius: 16px;
+  margin: 30px 0;
+}
+
+.hero h1 {
+  font-size: 54px;
+  margin-bottom: 16px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(225, 29, 29, 0.35);
+}
+
+.hero .lead {
+  font-size: 18px;
+  color: var(--muted-color);
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 10px;
+  background: var(--accent-color);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-accent);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(225, 29, 29, 0.45);
+}
+
+/* ===== Карточки ===== */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  flex: 1 1 calc(33.333% - 20px);
+  background: var(--panel-color);
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(225, 29, 29, 0.25);
+}
+
+.card-img {
+  width: 100%;
+  height: 180px; /* или auto, если нужно сохранить пропорции */
+  object-fit: cover; /* чтобы изображение занимало всю область карточки */
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* ===== Магазин (платежи) ===== */
+.payments {
+  display: flex;
+  flex-wrap: wrap;          
+  justify-content: center; 
+  gap: 20px;              
+  margin-top: 20px;         /* отступ сверху */
+}
+.payment-card {
+  background: var(--glass-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  width: 250px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.payment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-accent);
+}
+
+.payment-card img {
+  width: 190px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.payment-name {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.payment-min {
+  font-size: 13px;
+  color: var(--muted-color);
+}
+
+/* ===== Футер ===== */
+.site-footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: 50px;
+  background: #0d0e11;
+  color: var(--muted-color);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-inner .socials {
+  font-size: 14px;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 900px) {
+  .cards {
+    flex-direction: column;
+  }
+  .main-nav a {
+    margin-left: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .hero h1 {
+    font-size: 38px;
+  }
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  .card {
+    flex: 1 1 100%;
+  }
+}
+/* ===== АНИМАЦИЯ ПОЛОСЫ ПОД КНОПКАМИ ===== */
+.main-nav a {
+  position: relative;
+  color: var(--muted-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+  opacity: 0;
+  animation: navFadeIn 0.6s ease forwards;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width 0.3s ease, left 0.3s ease;
+  box-shadow: 0 0 8px rgba(225, 29, 29, 0.4);
+}
+
+.main-nav a:hover {
+  color: #fff;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.main-nav a.active {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.main-nav a.active::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Анимация появления слева → направо */
+@keyframes fadeSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Логотип */
+.logo {
+  opacity: 0;
+  animation: fadeSlideRight 0.7s ease forwards;
+  animation-delay: 0.1s;
+}
+
+/* Навигация */
+.main-nav a {
+  opacity: 0;
+  animation: fadeSlideRight 0.6s ease forwards;
+}
+
+/* Поочередное появление пунктов меню слева → направо */
+.main-nav a:nth-child(1) { animation-delay: 0.2s; }
+.main-nav a:nth-child(2) { animation-delay: 0.4s; }
+.main-nav a:nth-child(3) { animation-delay: 0.6s; }
+.main-nav a:nth-child(4) { animation-delay: 0.8s; }
+
+/* Мини-статистика справа */
+.mini-stats {
+  opacity: 0;
+  animation: fadeSlideRight 0.9s ease forwards;
+  animation-delay: 1s;
+}
+

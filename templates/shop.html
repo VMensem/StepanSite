@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<center><h2>Корзина</h2></center>
+
+<div id="cart" class="cards"></div>
+
+<center><h2 style="margin-top: 50px;">Способы оплаты</h2></center>
+<div class="payments">
+  {% for p in payments %}
+  <div class="payment-card">
+    <img src="{{ url_for('static', filename='images/' + p.img) }}" alt="{{ p.name }}">
+    <div class="payment-name">{{ p.name }}</div>
+    {% if p.min %}<div class="payment-min">Минимум {{ p.min }}</div>{% endif %}
+    <button class="btn pay-btn" data-method="{{ p.name }}">Оплатить этим способом</button>
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+const cartDiv = document.getElementById('cart');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function renderCart() {
+  cartDiv.innerHTML = '';
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${item.name}</h3>
+      <p>Цена: ${item.price.toFixed(2)}</p>
+      <button class="btn remove" data-index="${index}">Удалить</button>
+    `;
+    cartDiv.appendChild(card);
+
+    card.querySelector('.remove').addEventListener('click', e => {
+      const i = e.target.dataset.index;
+      cart.splice(i, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    });
+  });
+
+  if(cart.length > 0){
+    const totalDiv = document.createElement('div');
+    totalDiv.style.marginTop = '20px';
+    totalDiv.innerHTML = `<strong>Итого: ${total.toFixed(2)}</strong>`;
+    cartDiv.appendChild(totalDiv);
+  } else {
+    cartDiv.innerHTML = '<p>Корзина пуста</p>';
+  }
+}
+
+renderCart();
+
+// Оплата (пример)
+const payButtons = document.querySelectorAll('.pay-btn');
+payButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if(cart.length === 0){
+      alert('Корзина пуста!');
+      return;
+    }
+    const method = btn.dataset.method;
+    const sum = cart.reduce((acc, i) => acc + i.price, 0).toFixed(2);
+    alert(`Оплата ${cart.length} товаров на сумму ${sum} через ${method}`);
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  });
+});
+</script>
+{% endblock %}
