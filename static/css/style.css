@@ -28,7 +28,7 @@ a:hover {
 
 body {
   font-family: "Inter", "Roboto", Arial, sans-serif;
-  background: url('static/images/background.png') no-repeat center center fixed;
+  background: url('../images/background.png') no-repeat center center fixed;
   background-size: cover;
   color: var(--text-color);
   line-height: 1.6;
