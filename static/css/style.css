@@ -9,6 +9,7 @@
   --border-color: rgba(255, 255, 255, 0.07);
   --shadow-accent: 0 0 15px rgba(225, 29, 29, 0.349);
   --a-color: #e11d1d59; 
+  --btn-color: #ff8c00;
 }
 a {
   color: inherit; 
@@ -124,6 +125,22 @@ body {
 }
 
 .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(225, 29, 29, 0.45);
+}
+.btno {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 10px;
+  background: var(--bg-color);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: var(--btn-color);
+}
+
+.btno:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(225, 29, 29, 0.45);
 }
