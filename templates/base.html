@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title if title else 'TestGrief - Minecraft сервер' }}</title>
+<link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 <header class="site-header">
 <div class="container header-inner">
-<div class="logo"><a href="/">TestGrief</a></div>
+<div class="logo"><a href="/">SkillGrief</a></div>
 <nav class="main-nav">
 <a href="{{ url_for('index') }}">Главная</a>
 <a href="{{ url_for('shop') }}">Магазин</a>
@@ -29,7 +30,7 @@
 
 <footer class="site-footer">
 <div class="container footer-inner">
-<div>© <a href="/">TestGrief</a>. Все права защищены.
+<div>© <a href="/">SkillGrief</a>. Все права защищены.
 Сервер никак не относится к Mojang, AB. ИНН 664902316205.
 </div>
 <div class="socials">Соц. сети: <a href="https://vk.com/vladlotto">VK</a> · <a href="https://t.me/vladlotto">Telegram</a> · <a href="https://discord.gg/FxKkkmwEWb">Discord</a> · <a href="https://www.youtube.com/@Mensem">YouTube</a></div>
