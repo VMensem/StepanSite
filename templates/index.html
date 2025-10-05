@@ -91,6 +91,58 @@ cartButtons.forEach(btn => {
   });
 });
 </script>
+<script>
+const cartButtons = document.querySelectorAll('.add-to-cart');
 
+cartButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.name;
+    const price = parseFloat(btn.dataset.price);
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({name, price});
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // 🔹 Анимация кнопки
+    btn.style.transition = 'transform 0.3s ease, background 0.3s ease';
+    btn.style.transform = 'scale(1.15)';
+    btn.style.background = '#b91c1c';
+    setTimeout(() => {
+      btn.style.transform = 'scale(1)';
+      btn.style.background = '#e11d1d';
+    }, 300);
+
+    // 🔹 Уведомление с анимацией
+    const notif = document.createElement('div');
+    notif.textContent = `${name} добавлен в корзину`;
+    notif.style.position = 'fixed';
+    notif.style.bottom = '20px';
+    notif.style.right = '20px';
+    notif.style.background = '#e11d1d';
+    notif.style.color = 'white';
+    notif.style.padding = '10px 15px';
+    notif.style.borderRadius = '6px';
+    notif.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+    notif.style.zIndex = '1000';
+    notif.style.opacity = '0';
+    notif.style.transform = 'translateY(20px)';
+    notif.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    document.body.appendChild(notif);
+
+    // Плавное появление
+    setTimeout(() => {
+      notif.style.opacity = '1';
+      notif.style.transform = 'translateY(0)';
+    }, 10);
+
+    // Плавное исчезновение через 2 секунды
+    setTimeout(() => {
+      notif.style.opacity = '0';
+      notif.style.transform = 'translateY(20px)';
+      setTimeout(() => notif.remove(), 500);
+    }, 2000);
+  });
+});
+</script>
 
 {% endblock %}
