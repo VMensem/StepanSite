@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="payment-result info">
+  <div class="icon">ℹ️</div>
+  <h2>Ожидание подтверждения</h2>
+  <p>Ваш платёж обрабатывается. Мы уведомим вас, когда всё будет готово.</p>
+  <a href="{{ url_for('index') }}" class="btn">На главную</a>
+</div>
+{% endblock %}
