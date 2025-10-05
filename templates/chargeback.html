@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="payment-result chargeback">
+  <div class="icon">⚠️</div>
+  <h2>Чарджбэк оформлен</h2>
+  <p>Платёж был отозван. Если это ошибка — свяжитесь с поддержкой.</p>
+  <a href="{{ url_for('index') }}" class="btn">Связаться с поддержкой</a>
+</div>
+{% endblock %}
