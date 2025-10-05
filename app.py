@@ -59,22 +59,5 @@ def refund():
 def chargeback():
     return render_template('chargeback.html', stats=fake_stats)
 
-@app.route('/success')
-def success():
-    return render_template('success.html', stats=fake_stats)
-
-@app.route('/fail')
-def fail():
-    return render_template('fail.html', stats=fake_stats)
-
-@app.route('/refund')
-def refund():
-    return render_template('refund.html', stats=fake_stats)
-
-@app.route('/shop-verification-eAmwba1vd5.txt')
-def txt():
-    return render_template('shop-verification-eAmwba1vd5.txt')
-
-
 if __name__ == '__main__':
     app.run(debug=True)
