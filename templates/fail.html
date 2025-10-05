@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="payment-result fail">
+  <div class="icon">❌</div>
+  <h2>Платёж не прошёл</h2>
+  <p>Произошла ошибка при оплате. Попробуйте снова позже.</p>
+  <a href="{{ url_for('shop') }}" class="btn">Вернуться в магазин</a>
+</div>
+{% endblock %}
