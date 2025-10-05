@@ -14,10 +14,10 @@
 <nav class="main-nav">
 <a href="{{ url_for('index') }}">Главная</a>
 <a href="{{ url_for('shop') }}">Магазин</a>
+</nav>
 <div class="cart-icon" onclick="window.location='{{ url_for('shop') }}'">
     🛒 <span id="cart-count">0</span>
 </div>
-</nav>
 <div class="mini-stats">
 <div class="stat">Игроки: <span>{{ stats.players_now }}</span></div>
 <div class="stat">Баланс: <span>{{ stats.balance }}</span></div>
