@@ -47,6 +47,10 @@ def success():
 def fail():
     return render_template('fail.html', stats=fake_stats)
 
+@app.route('/result')
+def result():
+    return render_template('result.html', stats=fake_stats)
+
 @app.route('/refund')
 def refund():
     return render_template('refund.html', stats=fake_stats)
