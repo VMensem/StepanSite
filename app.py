@@ -43,31 +43,17 @@ def shop():
 def success():
     return render_template('success.html', stats=fake_stats)
 
-
 @app.route('/fail')
 def fail():
     return render_template('fail.html', stats=fake_stats)
 
-
-@app.route('/result', methods=['POST'])
-def result():
-    data = request.json or request.form
-    print("Result callback:", data)
-    return jsonify({'status': 'ok'})
-
-
-@app.route('/refund', methods=['POST'])
+@app.route('/refund')
 def refund():
-    data = request.json or request.form
-    print("Refund callback:", data)
-    return jsonify({'status': 'ok'})
+    return render_template('refund.html', stats=fake_stats)
 
-
-@app.route('/chargeback', methods=['POST'])
+@app.route('/chargeback')
 def chargeback():
-    data = request.json or request.form
-    print("Chargeback callback:", data)
-    return jsonify({'status': 'ok'})
+    return render_template('chargeback.html', stats=fake_stats)
 
 
 if __name__ == '__main__':
