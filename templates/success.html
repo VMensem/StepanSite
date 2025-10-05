@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="payment-result success">
+  <div class="icon">✅</div>
+  <h2>Платёж успешно выполнен!</h2>
+  <p>Спасибо за вашу поддержку ❤️</p>
+  <a href="{{ url_for('index') }}" class="btn">Вернуться на главную</a>
+</div>
+{% endblock %}
