@@ -40,6 +40,20 @@
 </div>
 </footer>
 <script>
+// === Появление корзины слева направо при загрузке страницы ===
+document.addEventListener('DOMContentLoaded', () => {
+  const cart = document.querySelector('.cart-icon');
+  if (cart) {
+    setTimeout(() => {
+      cart.classList.add('show'); // запускаем анимацию появления
+    }, 300); // задержка 0.3 сек
+  }
+
+  // Обновляем количество товаров при загрузке
+  updateCartCount();
+});
+
+// === Обновление количества товаров и подпрыгивание цифры ===
 function updateCartCount(animated = false) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   const countEl = document.getElementById('cart-count');
@@ -53,12 +67,10 @@ function updateCartCount(animated = false) {
   }
 }
 
-// Обновляем при загрузке
-document.addEventListener('DOMContentLoaded', updateCartCount);
-
-// Обновляем при добавлении товара (если на странице есть кнопки)
+// Обновляем при добавлении товара
 document.addEventListener('click', (e) => {
   if (e.target.classList.contains('add-to-cart')) {
+    // подпрыгивание цифры через 0.1 сек после добавления
     setTimeout(() => updateCartCount(true), 100);
   }
 });
