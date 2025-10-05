@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="payment-result refund">
+  <div class="icon">💸</div>
+  <h2>Возврат оформлен</h2>
+  <p>Деньги будут возвращены на ваш счёт в ближайшее время.</p>
+  <a href="{{ url_for('index') }}" class="btn">На главную</a>
+</div>
+{% endblock %}
