@@ -1,15 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-from mcstatus import MinecraftServer
+from mcstatus import JavaServer
 
 app = Flask(__name__)
-
-# IP и порт твоего сервера
-server = MinecraftServer.lookup("5.9.235.227:25657")
-
-# Получаем статус
-status = server.status()
-online_players = status.players.online
-max_players = status.players.max
 
 # Методы оплаты
 payments = [
@@ -19,19 +11,27 @@ payments = [
     {'name': 'MasterCard', 'min': '10 ₽', 'img': 'master.png'},
 ]
 
+MINECRAFT_IP = "5.9.235.227"
+MINECRAFT_PORT = 25657
+
+def get_minecraft_status():
+    try:
+        server = JavaServer.lookup(f"{MINECRAFT_IP}:{MINECRAFT_PORT}")
+        status = server.status()
+        return status.players.online, status.players.max
+    except Exception as e:
+        print("Ошибка получения статуса:", e)
+        return 0, 0
 
 @app.route('/')
 def index():
-    from mcstatus import MinecraftServer
-    server = MinecraftServer.lookup("mc.example.com:25565")
-    status = server.status()
+    online, max_players = get_minecraft_status()
     stats = {
-        'online': status.players.online,
-        'max_players': status.players.max,
+        'online': online,
+        'max_players': max_players,
         'balance': '999 ₽'
     }
     return render_template('index.html', stats=stats)
-
 
 @app.route('/shop')
 def shop():
