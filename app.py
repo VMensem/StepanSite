@@ -11,19 +11,6 @@ payments = [
     {'name': 'MasterCard', 'min': '10 ₽', 'img': 'master.png'},
 ]
 
-from flask import Flask, render_template, request, redirect, url_for, jsonify
-from mcstatus import JavaServer
-
-app = Flask(__name__)
-
-# Методы оплаты
-payments = [
-    {'name': 'СБП', 'min': '10 ₽', 'img': 'sbp.png'},
-    {'name': 'МИР', 'min': '10 ₽', 'img': 'mir.png'},
-    {'name': 'Visa', 'min': '10 ₽', 'img': 'visa.png'},
-    {'name': 'MasterCard', 'min': '10 ₽', 'img': 'master.png'},
-]
-
 MINECRAFT_IP = "5.9.235.227"
 MINECRAFT_PORT = 25657
 
@@ -86,13 +73,13 @@ def reviews():
     fake_reviews = [
         {
             "name": "Mensem",
-            "avatar": "https://vk.com/images/camera_200.png",
+            "avatar": "https://i.ibb.co/0ps3WbyW/image.jpg",
             "text": "Купил Cкиллы и Premium — всё выдалось. Крутой проект🔥",
             "date": "5 октября 2025"
         },
         {
             "name": "Mariotto",
-            "avatar": "https://vk.com/images/camera_200.png",
+            "avatar": "https://i.ibb.co/23cfmd3J/mariotto.jpg",
             "text": "Купил Донат-кейс, выбил Premium — халява!",
             "date": "2 октября 2025"
         },
