@@ -5,7 +5,7 @@
   <p class="lead">Магазин сервера — товары, права, донат.</p>
   <a class="btno" href="{{ url_for('shop') }}">Перейти к оплате</a>
   <div class="play-stats">
-    <div class="play-count">Сейчас играют: <strong>{{ stats.players_now }}</strong></div>
+    <div class="play-count">Сейчас играют: <strong>{{ stats.online }}/{{ stats.max_players }}</strong></div>
   </div>
 </section>
 
