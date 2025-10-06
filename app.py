@@ -1,22 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+from mcstatus import MinecraftServer
 
 app = Flask(__name__)
 
-# Пример данных
-fake_stats = {
-    'online': 999,
-    'players_now': 999,
-    'balance': '999 ₽'
-}
+# IP и порт твоего сервера
+server = MinecraftServer.lookup("5.9.235.227:25657")
 
-# Пример товаров
-products = [
-    {'id': 1, 'name': 'Привилегия VIP', 'desc': 'Доступ к командам и бонусам.', 'img': 'item1.png', 'price': 99},
-    {'id': 2, 'name': 'Привилегия Premium', 'desc': 'Больше возможностей и прав.', 'img': 'item2.png', 'price': 199},
-    {'id': 3, 'name': 'Монеты', 'desc': 'Валюта для покупок в игре.', 'img': 'item3.png', 'price': 50},
-    {'id': 4, 'name': 'Питомец', 'desc': 'Уникальный спутник на сервере.', 'img': 'item4.png', 'price': 149},
-    {'id': 5, 'name': 'Титул "Легенда"', 'desc': 'Редкий титул на сервере.', 'img': 'item5.png', 'price': 249},
-]
+# Получаем статус
+status = server.status()
+online_players = status.players.online
+max_players = status.players.max
 
 # Методы оплаты
 payments = [
@@ -29,15 +22,20 @@ payments = [
 
 @app.route('/')
 def index():
-    return render_template('index.html', stats=fake_stats, products=products)
+    from mcstatus import MinecraftServer
+    server = MinecraftServer.lookup("mc.example.com:25565")
+    status = server.status()
+    stats = {
+        'online': status.players.online,
+        'max_players': status.players.max,
+        'balance': '999 ₽'
+    }
+    return render_template('index.html', stats=stats)
 
 
 @app.route('/shop')
 def shop():
     return render_template('shop.html', payments=payments, stats=fake_stats)
-
-
-# === PAYMENTS CALLBACKS ===
 
 @app.route('/success')
 def success():
