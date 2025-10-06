@@ -79,7 +79,7 @@ def reviews():
             "date": "1 октября 2025"
         }
     ]
-    return render_template('reviews.html', reviews=fake_reviews)
+    return render_template('reviews.html', reviews=fake_reviews, stats=stats)
 
 
 if __name__ == '__main__':
