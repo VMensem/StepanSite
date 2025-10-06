@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Отзывы — MensemHost{% endblock %}
+
+{% block content %}
+<section class="reviews-section">
+    <h1 class="reviews-title">Отзывы наших пользователей 💬</h1>
+    <div class="reviews-container">
+        {% for review in reviews %}
+        <div class="review-card fade-in">
+            <img src="{{ review.avatar }}" alt="{{ review.name }}" class="review-avatar">
+            <div class="review-content">
+                <h3 class="review-name">{{ review.name }}</h3>
+                <p class="review-text">{{ review.text }}</p>
+                <span class="review-date">{{ review.date }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
