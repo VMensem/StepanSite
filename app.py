@@ -35,27 +35,27 @@ def index():
 
 @app.route('/shop')
 def shop():
-    return render_template('shop.html', payments=payments, stats=fake_stats)
+    return render_template('shop.html', payments=payments, stats=stats)
 
 @app.route('/success')
 def success():
-    return render_template('success.html', stats=fake_stats)
+    return render_template('success.html', stats=stats)
 
 @app.route('/fail')
 def fail():
-    return render_template('fail.html', stats=fake_stats)
+    return render_template('fail.html', stats=stats)
 
 @app.route('/result')
 def result():
-    return render_template('result.html', stats=fake_stats)
+    return render_template('result.html', stats=stats)
 
 @app.route('/refund')
 def refund():
-    return render_template('refund.html', stats=fake_stats)
+    return render_template('refund.html', stats=stats)
 
 @app.route('/chargeback')
 def chargeback():
-    return render_template('chargeback.html', stats=fake_stats)
+    return render_template('chargeback.html', stats=stats)
 
 if __name__ == '__main__':
     app.run(debug=True)
