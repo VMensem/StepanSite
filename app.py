@@ -108,31 +108,3 @@ def reviews():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-@app.route('/reviews')
-def reviews():
-    fake_reviews = [
-        {
-            "name": "Mensem",
-            "avatar": "https://vk.com/images/camera_200.png",
-            "text": "Купил Cкиллы и Premium, все выдалось. Крутой проект🔥",
-            "date": "5 октября 2025"
-        },
-        {
-            "name": "Mariotto",
-            "avatar": "https://vk.com/images/camera_200.png",
-            "text": "Купил Донат-кейс, выбил Premium, халява!",
-            "date": "2 октября 2025"
-        },
-        {
-            "name": "Kirill7779991",
-            "avatar": "https://vk.com/images/camera_200.png",
-            "text": "Отличный сервер, без лагов, нормыльный и отзывчивый персонал, рекомендую! 💪",
-            "date": "1 октября 2025"
-        }
-    ]
-    return render_template('reviews.html', reviews=fake_reviews, stats=get_stats())
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
